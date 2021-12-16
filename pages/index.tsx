@@ -1,7 +1,7 @@
 import { useState } from "react";
 import XLSX from 'xlsx'
 import { Table,Button } from 'antd';
-import router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 
 
 
@@ -9,6 +9,8 @@ export default function CsvReader(){
     const [csvFile, setCsvFile] = useState();
     const [csvArray, setCsvArray] = useState([]);
     const [tableShow, setTableShow] = useState(false);
+    const router = useRouter()
+
     // [{ลำดับที่: "", รหัส: "", รายชื่อ: "", เงินเดือน: "", เงินเดือนตกเบิก: "", รวม: "", OT: "", ค่าคอมมิชชั่น: "", ค่าชดเชยและสวัสติการ: "", ค่าโทรศัพท์: "", อื่นๆ: "",
     //   เงินชดเชย: "", เงินได้พิเศษ: "", โบนัส: "", รวมเงินได้: "", ภาษี: "", เงินประกัน: "", เงินกู้ยืม: "", ไม่รับเงินเดือน: "", รายหัก: "", เงินได้สุทธิ: ""}]
 
@@ -74,7 +76,7 @@ export default function CsvReader(){
             title: 'เงินเดือน',
             dataIndex: 'เงินเดือน',
             key: 'เงินเดือน'
-        }
+        },
       ];
 
       const confirmSave = (e:any) =>{
@@ -87,7 +89,7 @@ export default function CsvReader(){
               })
               localStorage.setItem("Data",JSON.stringify(dataSlip));
               alert("Success Save!")
-              router.push('../')
+              router.push('../salary')
 
           } else {
               alert("Plese try again!")
