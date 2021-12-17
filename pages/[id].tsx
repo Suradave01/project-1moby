@@ -6,10 +6,20 @@ function ShowSlip() {
 
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-    const docDefinition = {
-    content: [
-      { text: 'สวัสดีประเทศไทย reat pdf demo ', fontSize: 15 },
-    ],
+    const reportTitle = [
+      {
+        text: 'บริษัท วันม๊อบบี้ จำกัด',
+        fontSize: 15,
+        bold: true,
+        margin: [15, 20, 0, 45]
+      }
+    ]
+
+    const docDefinition:any = {
+      pageSize: 'A4',
+      pageMargins: [15, 50, 15, 40],
+
+      header: [reportTitle]
     };
     pdfMake.createPdf(docDefinition).open()
 }
